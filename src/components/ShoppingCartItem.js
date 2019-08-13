@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 
-import { ProductContext } from '../contexts/ProductContext'
+import { CartContext } from '../contexts/CartContext'
 
 const Item = props => {
-	const {cart} = useContext(ProductContext);
+	const { cart, removeItem } = useContext(CartContext);
 	return (
 		<div className="shopping-cart_item">
 			<img src={props.image} alt={`${props.title} book`} />
@@ -13,7 +13,7 @@ const Item = props => {
 				<h1>{props.title}</h1>
 				<p>$ {props.price}</p>
 				<button
-					onClick={() => cart.removeItem(props)}
+					onClick={() => removeItem(props.id)}
 				>Remove from cart</button>
 			</div>
 		</div>
